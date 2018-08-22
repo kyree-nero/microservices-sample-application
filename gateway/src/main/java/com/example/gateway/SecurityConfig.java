@@ -19,19 +19,51 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .withUser("admin").password("admin").roles("ADMIN");
     }
 
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http
+//            .formLogin()
+//            .defaultSuccessUrl("/home/index.html", true)
+//            .and()
+//        .authorizeRequests()
+//            .antMatchers("/book-service/**", "/rating-service/**", "/login*", "/").permitAll()
+//            .antMatchers("/eureka/**").hasRole("ADMIN")
+//            .anyRequest().authenticated()
+//            .and()
+//        .logout()
+//            .and()
+//        .csrf().disable();
+//    }
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http
+//          .formLogin()
+//          .defaultSuccessUrl("/home/index.html", true)
+//          .and()
+//        .authorizeRequests()
+//          .antMatchers("/book-service/**", "/rating-service/**", "/login*", "/")
+//          .permitAll()
+//          .antMatchers("/eureka/**").hasRole("ADMIN")
+//          .anyRequest().authenticated()
+//          .and()
+//        .logout()
+//          .and()
+//        .csrf().disable();
+//    }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .formLogin()
-            .defaultSuccessUrl("/home/index.html", true)
-            .and()
+          .formLogin()
+          .defaultSuccessUrl("/home/index.html", true)
+          .and()
         .authorizeRequests()
-            .antMatchers("/book-service/**", "/rating-service/**", "/login*", "/").permitAll()
-            .antMatchers("/eureka/**").hasRole("ADMIN")
-            .anyRequest().authenticated()
-            .and()
+          .antMatchers("/book-service/**", "/rating-service/**", "/login*", "/")
+          .permitAll()
+          .antMatchers("/eureka/**").hasRole("ADMIN")
+          .anyRequest().authenticated()
+          .and()
         .logout()
-            .and()
+          .and()
         .csrf().disable();
     }
 }
