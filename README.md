@@ -11,10 +11,12 @@ Setup
 
 
 
-
 The startup order is config,discovery, services, and finally gateway.   If its started out of order things tend to not work.
 
-All services except config (which looks for the discovery service post startup) will startup without issue.  If you do see an error... restart the offending service IN ORDER
+Most services except config (which looks for the discovery service post startup) will startup without issue.  You might see that gateway doesn't start up okay if it can not see the config server( which takes a while to become truly available after it sees discovery)... just try again and it should work.   
 
-Just to play around all 403s and 401s are redirected to /login.  In the real world this would probably be more sophisticated but the point was to show that streams can be redirected :).
+<http://localhost:8080>
 
+<http://localhost:8080/book-service>
+
+<http://localhost:8080/book-service/books/1>
