@@ -1,8 +1,9 @@
-package com.example.gateway;
+package com.example.sampleservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -13,37 +14,33 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
 	@Bean PasswordEncoder passwordEncoder() {
 		return  NoOpPasswordEncoder.getInstance();
 	}
 	
+	
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().passwordEncoder(passwordEncoder())
-            .withUser("user").password("password").roles("USER")
-                .and()
-            .withUser("admin").password("admin").roles("ADMIN");
+    public void configureGlobal1(AuthenticationManagerBuilder auth) throws Exception {
+        //try in memory auth with no users to support the case that this will allow for users that are logged in to go anywhere
+        auth.inMemoryAuthentication().passwordEncoder(passwordEncoder());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-          .formLogin()
-          .defaultSuccessUrl("/index.html", true)
-          .and()
+        http.httpBasic()
+            .disable()
         .authorizeRequests()
-          .antMatchers(
-        		  "/book-service/**", 
-        		  "/rating-service/**", 
-        		  "/sample-service/**", 
-        		  "/login*", 
-        		  "/")
-          .permitAll()
-          .antMatchers("/eureka/**").hasRole("ADMIN")
-          .anyRequest().authenticated()
-          .and()
-        .logout()
-          .and()
-        .csrf().disable();
+        		.antMatchers("/books").permitAll()
+        	  .antMatchers("/books/*").hasAnyRole("USER", "ADMIN")
+//            .antMatchers(HttpMethod.GET, "/books").permitAll()
+//            .antMatchers(HttpMethod.GET, "/books/*").permitAll()
+//            .antMatchers(HttpMethod.POST, "/books").hasRole("ADMIN")
+//            .antMatchers(HttpMethod.PATCH, "/books/*").hasRole("ADMIN")
+//            .antMatchers(HttpMethod.DELETE, "/books/*").hasRole("ADMIN")
+            .anyRequest().authenticated()
+            .and()
+        .csrf()
+            .disable();
     }
 }

@@ -15,8 +15,10 @@ The startup order is config,discovery, services, and finally gateway.   If its s
 
 Most services except config (which looks for the discovery service post startup) will startup without issue.  You might see that gateway doesn't start up okay if it can not see the config server( which takes a while to become truly available after it sees discovery)... just try again and it should work.   
 
-<http://localhost:8080>
+<http://localhost:8080/index.html>
 
 <http://localhost:8080/book-service>
 
 <http://localhost:8080/book-service/books/1>
+
+<http://localhost:8080/sample-service/sample>
