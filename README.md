@@ -15,6 +15,8 @@ The startup order is config,discovery, services, and finally gateway.   If its s
 
 Most services except config (which looks for the discovery service post startup) will startup without issue.  You might see that gateway doesn't start up okay if it can not see the config server( which takes a while to become truly available after it sees discovery)... just try again and it should work.   
 
+sample-service (since you can run multiple instances) expects server.port to be specified.  Both boot runners in /build of that project set 8085 and 9085 respectively.  The payload has the port that services the request in it so you can see the load balancing running.
+
 <http://localhost:8080/index.html>
 
 <http://localhost:8080/book-service>
