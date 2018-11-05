@@ -19,8 +19,4 @@ sample-service (since you can run multiple instances) expects server.port to be 
 
 <http://localhost:8080/index.html>
 
-<http://localhost:8080/book-service>
-
-<http://localhost:8080/book-service/books/1>
-
 <http://localhost:8080/sample-service/sample>
