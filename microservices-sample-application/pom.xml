@@ -70,4 +70,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	<modules>
+		<module>cloud-config</module>
+	</modules>
 </project>
