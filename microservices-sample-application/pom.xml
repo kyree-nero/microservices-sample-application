@@ -76,5 +76,6 @@
 		<module>cloud-gateway</module>
 		<module>cloud-discovery-client</module>
 		<module>cloud-zipkin</module>
+		<module>cloud-sample-service</module>
 	</modules>
 </project>
