@@ -72,5 +72,9 @@
 	</dependencyManagement>
 	<modules>
 		<module>cloud-config</module>
+		<module>cloud-discovery</module>
+		<module>cloud-gateway</module>
+		<module>cloud-discovery-client</module>
+		<module>cloud-zipkin</module>
 	</modules>
 </project>
