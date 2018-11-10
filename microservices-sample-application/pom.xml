@@ -77,7 +77,6 @@
 		<module>cloud-discovery-client</module>
 		<module>cloud-zipkin</module>
 		<module>cloud-sample-service</module>
-		<module>?</module>
 		<module>embedded-redis</module>
 	</modules>
 </project>
