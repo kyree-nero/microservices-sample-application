@@ -14,7 +14,7 @@ Pre - Setup
 
 Startup
 
-The startup order is config,discovery, services, and finally gateway.   If its started out of order things tend to not work.
+The startup order is config, embedded-redis(optional*) discovery, services, and finally gateway.   If its started out of order things tend to not work.
 
 Most services except config (which looks for the discovery service post startup) will startup without issue.  You might see that gateway doesn't start up okay if it can not see the config server( which takes a while to become truly available after it sees discovery)... just try again and it should work.   
 
@@ -32,4 +32,4 @@ urls
 
 additional 
 
-session management -- this project uses redis. In the real world you will want to install it.  For the purposes of this demo we use embedded redis which I've embedded into the discovery service.  I dont know if it works on windows, but if you are developing on a windows machine you have other problems :) 
+session management (*)-- this project uses redis. In the real world you will want to install it.  For the purposes of this demo we use embedded redis as a short cut.  Embedded-redis is a community project with limited support.  If you have trouble with it just install the actual redis.
