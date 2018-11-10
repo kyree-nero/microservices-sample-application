@@ -1,0 +1,26 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: discovery
+  cloud:
+    config:
+      :fail-fast: true
+  redis:
+    host: localhost
+    port: 6379
+  session:
+    store-type: redis
+    datasource:
+      url: jdbc:h2:mem:a;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      driverClassName: org.h2.Driver
+      username: sa
+      
+eureka: 
+  client:
+      register-with-eureka: false
+      fetch-registry: false
+      serviceUrl:
+        defaultZone: http://discUser:discPassword@localhost:8082/eureka/
+  instance: 
+    hostname: localhost
