@@ -84,6 +84,7 @@
 		<module>cloud-zipkin</module>
 		<module>cloud-sample-service</module>
 		<module>embedded-redis</module>
+		<module>cloud-discovery-client-test</module>
 	</modules>
 	
 	<build>
