@@ -14,7 +14,12 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.kyree.sample</groupId>
+			<artifactId>cloud-discovery-client-test</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
 		
 		
 	</dependencies>

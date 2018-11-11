@@ -1,0 +1,46 @@
+server:
+  port: 59999
+spring:
+  application:
+    name: gateway
+  cloud:
+    config:
+      enabled: false
+  autoconfigure.exclude: org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration, org.springframework.boot.actuate.autoconfigure.redis.RedisHealthIndicatorAutoConfiguration
+  session:
+    store-type: jdbc
+    datasource:
+      url: jdbc:h2:mem:a;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      driverClassName: org.h2.Driver
+      username: sa
+eureka: 
+  client:
+      register-with-eureka: false
+      fetch-registry: false
+  instance: 
+    hostname: localhost
+ 
+
+zuul:
+  routes:
+    test-service:
+      #path: /test-service/**
+      url: http://localhost:59999/success
+      sensitive-headers: Set-Cookie,Authorization
+    
+hystrix:
+  command:  
+    test-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 600000
+ 
+            
+test-service:
+  ribbon:
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxConnectionsPerHost: 100
+    listOfServers: http://localhost
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList

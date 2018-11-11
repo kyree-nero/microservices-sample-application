@@ -6,4 +6,15 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>cloud-discovery-client-test</artifactId>
+  
+  <dependencies>
+  	<dependency>
+	    <groupId>org.springframework.session</groupId>
+	    <artifactId>spring-session-jdbc</artifactId>
+	</dependency>
+	<dependency>
+	    <groupId>com.h2database</groupId>
+	    <artifactId>h2</artifactId>
+	</dependency>	
+  </dependencies>
 </project>

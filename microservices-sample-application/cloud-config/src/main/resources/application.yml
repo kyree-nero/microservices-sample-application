@@ -7,7 +7,8 @@ spring:
     config:
       server:
         git: 
-          uri: file://home/x/Documents/workspaces/ms/git/microservices-sample-application/microservices-sample-application/app-config
+          #uri: file://home/x/Documents/workspaces/ms/git/microservices-sample-application/microservices-sample-application/app-config
+          uri: file://home//x//Documents//workspaces//ms//localconfig
   security:
     user:
       name: configUser
