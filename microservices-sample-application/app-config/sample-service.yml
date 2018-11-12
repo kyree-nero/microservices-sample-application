@@ -11,7 +11,7 @@ spring:
     store-type: redis
   sleuth: 
     sampler:
-      percentage: 1.0
+      probability: 1.0
     web:
       skipPattern: (^cleanup.*)
 
