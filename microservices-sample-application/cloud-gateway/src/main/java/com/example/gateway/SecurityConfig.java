@@ -33,8 +33,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
           .and()
         .authorizeRequests()
           .antMatchers(
-        		  "/book-service/**", 
-        		  "/rating-service/**", 
         		  "/sample-service/**", 
         		  "/login*", 
         		  "/")
