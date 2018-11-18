@@ -14,7 +14,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.GenericFilterBean;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment=WebEnvironment.DEFINED_PORT)
+@SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
 //@EnableAutoConfiguration(exclude= {RedisAutoConfiguration.class})
 @TestPropertySource(properties="debug=true")
 @ActiveProfiles("test")

@@ -68,7 +68,7 @@ public class GatewayApplicationIT extends AbstractIT{
 		MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
 		
 		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
-		ResponseEntity<String> response = testRestTemplate.exchange("http://localhost:" + 59999 + "/test-service/test", HttpMethod.GET, request, String.class);
+		ResponseEntity<String> response = testRestTemplate.exchange("http://localhost:" + randomServerPort + "/test-service/test", HttpMethod.GET, request, String.class);
 		
 		Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
 		Assert.assertEquals("success", response.getBody());
@@ -88,12 +88,12 @@ public class GatewayApplicationIT extends AbstractIT{
 		MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
 		
 		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
-		ResponseEntity<String> response = testRestTemplate.postForEntity("http://localhost:" + 59999 + "/index.html", request, String.class);
+		ResponseEntity<String> response = testRestTemplate.postForEntity("http://localhost:" + randomServerPort + "/index.html", request, String.class);
 		
 		System.out.println(response);
 		
 		Assert.assertEquals(HttpStatus.FOUND, response.getStatusCode());
-		Assert.assertEquals("http://localhost:" + 59999 + "/login", response.getHeaders().get("location").get(0));
+		Assert.assertEquals("http://localhost:" + randomServerPort + "/login", response.getHeaders().get("location").get(0));
 		
 		
 	}
@@ -109,7 +109,7 @@ public class GatewayApplicationIT extends AbstractIT{
 		map.add("password", "password");
 		
 		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
-		ResponseEntity<String> response = testRestTemplate.postForEntity("http://localhost:" + 59999 + "/login", request, String.class);
+		ResponseEntity<String> response = testRestTemplate.postForEntity("http://localhost:" + randomServerPort + "/login", request, String.class);
 		
 		Assert.assertNotNull(response.getHeaders().get(HttpHeaders.SET_COOKIE));
 		String cookie = response.getHeaders().get(HttpHeaders.SET_COOKIE).get(0);
@@ -126,12 +126,12 @@ public class GatewayApplicationIT extends AbstractIT{
 		MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
 		
 		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
-		ResponseEntity<String> response = testRestTemplate.postForEntity("http://localhost:" + 59999 + "/logout", request, String.class);
+		ResponseEntity<String> response = testRestTemplate.postForEntity("http://localhost:" + randomServerPort + "/logout", request, String.class);
 		
 		System.out.println(response);
 		
 		Assert.assertEquals(HttpStatus.FOUND, response.getStatusCode());
-		Assert.assertEquals("http://localhost:" + 59999 + "/login?logout", response.getHeaders().get("location").get(0));
+		Assert.assertEquals("http://localhost:" + randomServerPort + "/login?logout", response.getHeaders().get("location").get(0));
 		
 		
 		
