@@ -19,7 +19,9 @@ eureka:
       fetch-registry: false
   instance: 
     hostname: localhost
- 
+ribbon:
+  eureka:
+    enabled: false 
 
 zuul:
   routes:

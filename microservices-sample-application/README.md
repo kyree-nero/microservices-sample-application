@@ -26,7 +26,7 @@ urls
 
 <http://localhost:8080/index.html>
 
-<http://localhost:8080/discovery/eureka/apps>
+<http://discUser:discPassword@localhost:8082/eureka/apps>
 
 <http://localhost:9411/zipkin>
 
