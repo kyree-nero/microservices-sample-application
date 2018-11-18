@@ -20,3 +20,5 @@ eureka:
         defaultZone: http://discUser:discPassword@localhost:8082/eureka/
   instance: 
     hostname: localhost
+    healthcheck:
+      enabled: true  
