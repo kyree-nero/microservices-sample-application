@@ -19,8 +19,14 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+		</dependency>
+		
+		<dependency>
 		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>  
+		    <!-- exclude jersey client and force resttemplate usage-->
 		    <exclusions>
 		        <exclusion>
 		            <groupId>com.sun.jersey</groupId>
